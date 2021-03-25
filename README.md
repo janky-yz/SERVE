@@ -2,21 +2,19 @@
 
 A developed pipeline for expressed endogenous retrovirus identification.
 
-This repository contains SERVE pipeline (SERVE.tar.gz + example.sh) and ERV annotaion files (Annotation/)
+This repository contains SERVE pipeline (script/) and ERV annotaion files (annotation/)
 
-## Hardware and software requirements
+## Software requirements
 
-64 bit Linux
-conda
+1. Python 3.x.x and R
+2. STAR, sambamba, Trinity, RSEM, bowtie2, GMAP, gffread and bedtools (for SERVE.py)
+3. TACO, StringTie, Cufflinks, GMAP, and gffread (for SERVE_merge.py)
+4. RSEM and STAR (for SERVE_quant.py)
 
-## Obtaining and activating SERVE
+## Obtaining SERVE
 
 ```
 git clone https://github.com/yangence/SERVE.git
-cd SERVE
-mkdir SERVE_enviroment
-tar -zxf SERVE.tar.gz -C SERVE_enviroment/
-source SERVE_enviroment/bin/activate
 ```
 
 ## Usage
@@ -239,15 +237,9 @@ ${prefix}_ERV_count.txt and ${prefix}_ERV_TPM.txt records gene read counts and T
 
 ### Example pipeline
 
-Details in example.sh
-
-## Exiting SERVE
-
-```
-source SERVE_enviroment/bin/deactivate
-```
+Details in [script/example.sh]
 
 ## Copyright and License Information
 
-Copyright (C) 2021 Jianqi She (janky666@bjmu.edu.cn). See the LICENSE file for license rights and limitations.
+Copyright (C) 2021 Jianqi She (janky666@bjmu.edu.cn). See the [LICENSE] file for license rights and limitations.
 
