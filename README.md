@@ -7,9 +7,9 @@ This repository contains SERVE pipeline (script/) and ERV annotaion files (Annot
 ## Software requirements
 
 1. Python 3.x.x and R
-2. STAR, sambamba, Trinity, RSEM, bowtie2, GMAP, gffread and bedtools (for SERVE.py)
-3. TACO, StringTie, Cufflinks, GMAP, and gffread (for SERVE_merge.py)
-4. RSEM and STAR (for SERVE_quant.py)
+2. STAR, sambamba, Trinity, RSEM, bowtie2, GMAP, gffread and bedtools (for [SERVE.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE.py))
+3. TACO, StringTie, Cufflinks, GMAP, and gffread (for [SERVE_merge.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE_merge.py))
+4. RSEM and STAR (for [SERVE_quant.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE_quant.py))
 
 ## Obtaining SERVE
 
@@ -20,7 +20,7 @@ chmod u+x SERVE/script/SERVE*
 
 ## Usage
 
-SERVE is composed of transcript assembly (SERVE.py), annotation merge (SERVE_merge.py) and gene quantification (SERVE_quant.py + SERVE_quant_QC.py).
+SERVE is composed of transcript assembly ([SERVE.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE.py)), annotation merge ([SERVE_merge.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE_merge.py)) and gene quantification ([SERVE_quant.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE_quant.py) + [SERVE_quant_QC.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE_quant_QC.py)).
 
 ### Input files
 
