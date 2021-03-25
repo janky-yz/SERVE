@@ -2,7 +2,7 @@
 
 A developed pipeline for expressed endogenous retrovirus identification.
 
-This repository contains SERVE pipeline (script/) and ERV annotaion files (annotation/)
+This repository contains SERVE pipeline (script/) and ERV annotaion files (Annotation/)
 
 ## Software requirements
 
@@ -15,6 +15,7 @@ This repository contains SERVE pipeline (script/) and ERV annotaion files (annot
 
 ```
 git clone https://github.com/yangence/SERVE.git
+chmod u+x SERVE/script/SERVE*
 ```
 
 ## Usage
