@@ -7,7 +7,7 @@ This repository contains SERVE pipeline ([script/](https://github.com/janky-yz/S
 ## Software requirements
 
 1. Python 3.x.x and R
-2. STAR, sambamba, Trinity, RSEM, Bowtie2, GMAP, gffread and bedtools (for [SERVE.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE.py))
+2. STAR, sambamba, Trinity, RSEM, Bowtie2, GMAP, gffread and BEDTools (for [SERVE.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE.py))
 3. TACO, StringTie, Cufflinks, GMAP, and gffread (for [SERVE_merge.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE_merge.py))
 4. RSEM and STAR (for [SERVE_quant.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE_quant.py))
 
