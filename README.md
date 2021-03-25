@@ -238,9 +238,9 @@ ${prefix}_ERV_count.txt and ${prefix}_ERV_TPM.txt records gene read counts and T
 
 ### Example pipeline
 
-Details in [script/example.sh]
+Details in [example.sh](https://github.com/janky-yz/SERVE/blob/main/script/example.sh)
 
 ## Copyright and License Information
 
-Copyright (C) 2021 Jianqi She (janky666@bjmu.edu.cn). See the [LICENSE] file for license rights and limitations.
+Copyright (C) 2021 Jianqi She (janky666@bjmu.edu.cn). See the [LICENSE](https://github.com/janky-yz/SERVE/blob/main/LICENSE) file for license rights and limitations.
 
