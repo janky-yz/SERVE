@@ -1,4 +1,4 @@
-HERVd_noncoding.bed: HERV annotation from HERVd (In BED format)
+HERVd_noncoding.bed.gz: HERV annotation from HERVd (In BED format)
 
 *gtf: HERV annotation from GTEx (In GTF format)
 
