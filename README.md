@@ -24,9 +24,11 @@ SERVE is composed of transcript assembly ([SERVE.py](https://github.com/janky-yz
 
 ### Input files
 
+```
 RNA sequencing files: paired end, in FASTQ and compressed format (fastq.gz)
 ERV reference bed: ERV annotation in BED format (at least 6 fields: chrom, chromStart, chromEnd, name, score, and strand). See Annotation/HERV_noncoding.bed
 Reference genome: reference genome sequnce (FASTA) is required. You can create genome index before running SERVE, or provide Reference annotation (GTF) for SERVE to automatically create index.
+```
 
 !!!NOTICE: all directories and files should be provided with absolute paths.
 
@@ -100,6 +102,7 @@ optional arguments:
 ```
 
 In the output directory, you will see output files in three directories: "1_align/" for alignment, "2_assem/" for assembly, and "3_qc/" for quality control.
+
 ${prefix}_ERV.gtf (in "3_qc/") records ERV information in one sample. It can be used for downstream analysis (SERVE_merge.py).
 
 ### SERVE_merge.py
