@@ -245,5 +245,5 @@ Details in [example.sh](https://github.com/janky-yz/SERVE/blob/main/script/examp
 
 ## Copyright and License Information
 
-Copyright (C) 2021 Jianqi She (janky666@bjmu.edu.cn). See the [LICENSE](https://github.com/janky-yz/SERVE/blob/main/LICENSE) file for license rights and limitations.
+Copyright (C) 2021 Jianqi She (janky@pku.edu.cn). See the [LICENSE](https://github.com/janky-yz/SERVE/blob/main/LICENSE) file for license rights and limitations.
 
