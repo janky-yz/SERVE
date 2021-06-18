@@ -31,7 +31,7 @@ if(mode==2){
 
 	nsample=ncol(compare)-3
 	compare <- compare[compare[,3]!='-',]
-	keep <- rowSums(compare[,-c(2:3)]=="-")<=ratio*nsample
+	keep <- rowSums(compare[,-c(2:3)]!="-")>ratio*nsample
 	ERV_list <- unlist(strsplit(compare[keep,3], ',', fixed=T))
 	ERV_list <- t(as.data.frame(strsplit(ERV_list, '|', fixed=T)))[,1]
 	ERV_list <- unique(sort(ERV_list))
