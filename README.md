@@ -162,7 +162,7 @@ SERVE_quant.py is designed for ERV quantification in single sample.
 ```bash
 
 Example:
-ls ${Dir}/GRCh38.gtf ${Dir}/${prefix}_ERV_merge.gtf >${Dir}/GRCh38_ERV.gtf
+cat ${Dir}/GRCh38.gtf ${Dir}/${prefix}_ERV_merge.gtf >${Dir}/GRCh38_ERV.gtf
 SERVE_quant.py -fq1 ${Dir}/test_1.fastq.gz -fq2 ${Dir}/test_2.fastq.gz -p test -r ${Dir}/GRCh38.fa -a ${Dir}/GRCh38_ERV.gtf -t 16
 ```
 
@@ -211,7 +211,7 @@ SERVE_quant_QC.py is designed for merge gene quantification results (produced by
 ```bash
 
 Example:
-cat *genes.results >sample.list
+ls *genes.results >sample.list
 SERVE_quant_QC.py -i ${Dir}/sample.list -p test
 ```
 
