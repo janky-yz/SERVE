@@ -24,19 +24,17 @@ SERVE.py --fastq1 ${fastq1} --fastq2 ${fastq2} -e ${ref_erv} -r ${ref_genome} -a
 <<b
 nsample=`ls ${wrk_dir}/3_qc/*gtf | wc -l`
 
-cat ${wrk_dir}/3_qc/*gtf >${wrk_dir}/gtf.list
+ls ${wrk_dir}/3_qc/*gtf >${wrk_dir}/gtf.list
 SERVE_merge.py -i ${wrk_dir}/gtf.list -n ${nsample} -r ${ref_genome} -t ${nthread}
-
-## Quantifying ERVs for each sample
-
+b
+## Step 3: Quantifying ERVs for each sample
+<<b
 ERV_annotation=${wrk_dir}/SERVE_ERV_merge.gtf ## produced by SERVE_merge.py
 merge_annotation=${wrk_dir}/GRCh38_ERV_merge.gtf
 
 cat ${ref_annotation} ${ERV_annotation} >${merge_annotation}
 SERVE_quant.py --fastq1 ${fastq1} --fastq2 ${fastq2} -r ${ref_genome} -a ${merge_annotation} -t ${nthread} -p ${prefix}
 
-## Merging quantification results
-
-cat ${wrk_dir}/*genes.results >${wrk_dir}/sample.list
+ls ${wrk_dir}/*genes.results >${wrk_dir}/sample.list ## Merging quantification results
 SERVE_quant_QC.py -i ${wrk_dir}/sample.list 
 b

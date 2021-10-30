@@ -14,7 +14,8 @@ if(mode==2){
 
 	gff3_gene <- gff3[gff3[,3]=='gene',]
 	gff3_gene_remove <- gff3_gene[grep(pattern='path2', x=gff3_gene[,9]),9]
-	gff3_gene_remove_list <- t(as.data.frame(strsplit(gff3_gene_remove, '.', fixed=T)))[,1]
+	gff3_gene_remove_list <- t(as.data.frame(strsplit(gff3_gene_remove, ';', fixed=T)))[,1]
+	gff3_gene_remove_list <- gsub(".path2", "", gff3_gene_remove_list)
 	gff3_gene_remove_list <- t(as.data.frame(strsplit(gff3_gene_remove_list, '=', fixed=T)))[,2]
 	gff3_gene_remove_list <- unique(sort(gff3_gene_remove_list))
 	gene_remove_list <- unique(sort(gtf[gtf[,10] %in% gff3_gene_remove_list,13]))

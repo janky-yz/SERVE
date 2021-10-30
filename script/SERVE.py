@@ -143,7 +143,7 @@ ERV_gene_map = assem_dir+'/'+args.prefix+'_ERV_gene_trans_map'
 ERV_gff3 = qc_dir+'/'+args.prefix+'_ERV.gff3'
 ERV_gtf = qc_dir+'/'+args.prefix+'_ERV.gtf'
 ERV_bed = qc_dir+'/'+args.prefix+'_ERV.bed'
-
+ERV_exon_bed = qc_dir+'/'+args.prefix+'_ERV_exon.bed'
 
 if not os.path.exists(args.output_dir):
     os.makedirs(args.output_dir)
@@ -202,7 +202,7 @@ with cd(args.output_dir):
 
 	trinity_path = os.popen('which Trinity')
 	trinity_abspath = trinity_path.read()
-	cmd = os.path.dirname(trinity_abspath.splitlines()[0])+'/../opt/trinity-2.1.1/util/support_scripts/get_Trinity_gene_to_trans_map.pl ./2_assem/trinity_ERV/Trinity-GG.fasta >'+ERV_gene_map
+	cmd = os.path.dirname(trinity_abspath.splitlines()[0])+'/../opt/trinity-*/util/support_scripts/get_Trinity_gene_to_trans_map.pl ./2_assem/trinity_ERV/Trinity-GG.fasta >'+ERV_gene_map
 	subprocess.check_call(cmd, shell=True, executable='/bin/bash')
 
 	cmd = Estimate(args)
@@ -237,12 +237,16 @@ with cd(args.output_dir):
 	cmd = 'gffread'+' --bed --sort-alpha'+' -o '+ERV_bed+' '+ERV_gtf
 	subprocess.check_call(cmd, shell=True, executable='/bin/bash')
 
+	cmd = "grep exon "+ERV_gtf+" | awk '{print $1,$4-1,$5,$10,100,$7}' OFS='\t' | tr -d ';' >"+ERV_exon_bed
+	subprocess.check_call(cmd, shell=True, executable='/bin/bash')
+
 	ERV_overlap = qc_dir+'/'+args.prefix+'_overlap.txt'
 	if args.stranded_type:
-		cmd = 'bedtools intersect'+' -a '+ERV_bed+' -b '+args.erv_bed+' -s -wa -wb >'+ERV_overlap
+		cmd = 'bedtools intersect'+' -a '+ERV_exon_bed+' -b '+args.erv_bed+' -s -wa -wb >'+ERV_overlap
 	else:
-		cmd = 'bedtools intersect'+' -a '+ERV_bed+' -b '+args.erv_bed+' -wa -wb >'+ERV_overlap
+		cmd = 'bedtools intersect'+' -a '+ERV_exon_bed+' -b '+args.erv_bed+' -wa -wb >'+ERV_overlap
 	subprocess.check_call(cmd, shell=True, executable='/bin/bash')
+	os.remove(ERV_exon_bed)
 
 	cmd = 'Rscript '+script_dir+'/SERVE_QC.R '+args.prefix+' '+str(args.count)
 	subprocess.check_call(cmd, shell=True, executable='/bin/bash')

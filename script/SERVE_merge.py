@@ -25,6 +25,12 @@ def Taco_merge(args):
 		+' -o '+merge_dir
     return cmd
 
+def Cuff_merge(args):
+    cmd = 'cuffmerge'+' -o '+merge_dir \
+		+' -p '+str(args.nthread) \
+		+' '+args.input_gtf_list
+    return cmd
+
 def StringTie_merge(args):
     cmd = 'stringtie --merge'+' '+args.input_gtf_list \
                 +' -o '+assem_gtf
@@ -61,6 +67,7 @@ parser.add_argument('-i', '--input_gtf_list', help='A text file with a list of S
 parser.add_argument('-p', '--prefix', default='SERVE', help='Prefix for output file name (default: SERVE)')
 parser.add_argument('--taco', help='Merge ERV transcripts with TACO (default: FALSE)')
 parser.add_argument('--stringtie', help='Merge ERV transcripts with StringTie (default: FALSE)')
+parser.add_argument('--cuffmerge', help='Merge ERV transcripts with cuffmerge (default: FALSE)')
 parser.add_argument('-n', '--nsample', type=int, help='The number of samples included in the input sample list (required)')
 parser.add_argument('-r', '--ref_genome', help='Reference genome in FASTA format (required)')
 parser.add_argument('-G', '--GMAP_index', default='./GMAP_index', help='Path to the directory where GMAP index generated (default: GMAP_index)')
@@ -101,6 +108,12 @@ with cd(args.output_dir):
 	elif args.stringtie:
 		cmd = StringTie_merge(args)
 		subprocess.check_call(cmd, shell=True, executable='/bin/bash')
+
+	elif args.cuffmerge:
+		cmd = Cuff_merge(args)
+		subprocess.check_call(cmd, shell=True, executable='/bin/bash')
+		shutil.copyfile('./ERV_merge/merged.gtf',assem_gtf)
+		shutil.rmtree(merge_dir)
 
 	elif args.nsample>50:
 		cmd = Taco_merge(args)
