@@ -7,7 +7,7 @@ This repository contains SERVE pipeline ([script/](https://github.com/janky-yz/S
 ## Software requirements
 
 1. Python 3.x.x and R
-2. STAR, sambamba, Trinity, RSEM, Bowtie2, GMAP, gffread and BEDTools (for [SERVE.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE.py))
+2. STAR, sambamba, Trinity, RSEM, Bowtie2, GMAP, gffread v0.11.6 and BEDTools (for [SERVE.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE.py))
 3. TACO, StringTie, Cufflinks, GMAP, and gffread (for [SERVE_merge.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE_merge.py))
 4. RSEM and STAR (for [SERVE_quant.py](https://github.com/janky-yz/SERVE/blob/main/script/SERVE_quant.py))
 
@@ -112,7 +112,7 @@ SERVE_merge.py is designed for annotation merge, which is suited for single samp
 ```bash
 
 Example:
-cat *gtf >gtf.list
+ls *gtf >gtf.list
 SERVE_merge.py -i ${Dir}/gtf.list -p test -n 10 -r ${Dir}/GRCh38.fa -t 16
 ```
 
@@ -162,7 +162,7 @@ SERVE_quant.py is designed for ERV quantification in single sample.
 ```bash
 
 Example:
-cat ${Dir}/GRCh38.gtf ${Dir}/${prefix}_ERV_merge.gtf >${Dir}/GRCh38_ERV.gtf
+ls ${Dir}/GRCh38.gtf ${Dir}/${prefix}_ERV_merge.gtf >${Dir}/GRCh38_ERV.gtf
 SERVE_quant.py -fq1 ${Dir}/test_1.fastq.gz -fq2 ${Dir}/test_2.fastq.gz -p test -r ${Dir}/GRCh38.fa -a ${Dir}/GRCh38_ERV.gtf -t 16
 ```
 
