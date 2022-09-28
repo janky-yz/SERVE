@@ -14,7 +14,7 @@ This repository contains SERVE pipeline ([script/](https://github.com/janky-yz/S
 ## Obtaining SERVE
 
 ```
-git clone https://github.com/yangence/SERVE.git
+git clone https://github.com/janky-yz/SERVE.git
 chmod u+x SERVE/script/SERVE*
 ```
 
