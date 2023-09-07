@@ -1,0 +1,34 @@
+Bootstrap: docker
+From: continuumio/miniconda3
+Stage: devel
+
+%post
+conda config --add channels defaults
+conda config --add channels bioconda
+conda config --add channels conda-forge
+conda install -n base micromamba conda-pack
+micromamba create -n SERVE bedtools=2.30.0 bowtie2=2.3.5 star=2.7.6a trinity=2.8.5 sambamba=0.7.1 rsem=1.2.28 gmap=2021.05.27 gffread=0.12.1 taco stringtie cufflinks=2.2.1
+conda-pack -n SERVE -o /opt/env.tar
+cd /opt
+git clone https://github.com/yangence/SERVE.git
+mkdir /venv && cd /venv
+tar xf /opt/env.tar && rm /opt/env.tar
+/venv/bin/conda-unpack
+cp /opt/SERVE/script/SERVE* /venv/bin/
+
+Bootstrap: docker
+From: ubuntu
+Stage: final
+
+%files from devel
+/venv /venv
+
+%post
+chmod a+x /venv/bin/SERVE*
+apt update && apt upgrade -y
+apt install python3.10 -y
+update-alternatives --install /bin/python3 python3 /bin/python3.10 110
+
+%environment
+export LC_ALL=C
+export PATH="/venv/bin:$PATH"
