@@ -19,8 +19,9 @@ if(mode==2){
 	gff3_gene_remove_list <- t(as.data.frame(strsplit(gff3_gene_remove_list, '=', fixed=T)))[,2]
 	gff3_gene_remove_list <- unique(sort(gff3_gene_remove_list))
 	gene_remove_list <- unique(sort(gtf[gtf[,10] %in% gff3_gene_remove_list,13]))
+	gene_keep_list <- unique(sort(gtf[!gtf[,13] %in% gene_remove_list,13]))
 
-	gtf_filt <- gtf[!gtf[,13] %in% gene_remove_list,]
+	gtf_filt <- gtf[gtf[,13] %in% gene_keep_list,]
 	gtf_filt[,9] <- paste0(gtf_filt[,9], ' "', gtf_filt[,10], '"; ', gtf_filt[,12], ' "', gtf_filt[,13], '";')
 	write.table(gtf_filt[,1:9], file=gtf_file, sep='\t', col.names=F, row.names=F, quote=F)
 
